@@ -30,6 +30,10 @@ I believe the project source structure brings pretty wide demonstration of archi
 Even probably more than necessary (I wanted to show different OOP approaches with this example) that can be treat as excessive
 so please don't be so strict in that.
 
-It appears all other requirements are met, other validations, encoding, audit, sanitizing.
-The system allows enhancements where necessary e.g. it's possible to easily substitute the storage or the audit services.
-Unit test examples are added including Load Test scenario.
+It appears all other requirements are met,
+- other validations
+- encoding
+- audit
+- sanitizing.
+- The system allows enhancements where necessary e.g. it's possible to easily substitute the storage or the audit services.
+- Unit test examples are added including Load Test scenario.
