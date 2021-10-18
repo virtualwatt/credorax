@@ -16,10 +16,10 @@ public class Expiry extends TextField {
 
     static {
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("expiry"),
-                RegexValidatorsFactory.generateValidator("^\\n{4}$"), true));
+                RegexValidatorsFactory.generateValidator("^\\d{4}$"), true));
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("expired"),
                 value -> {
-                    String month = value.substring(0, 1);
+                    String month = value.substring(0, 2);
                     String year = value.substring(2);
                     String yearMonth = year + month;
                     int ym = Integer.parseUnsignedInt(yearMonth);

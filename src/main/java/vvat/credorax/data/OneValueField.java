@@ -13,6 +13,8 @@ public abstract class OneValueField<T> {
         return value;
     }
 
+    // Actually better approach for security reasons here is to provided statical length mask
+    // But let's leave it like this just for example
     public String getSanitizedValue() {
         String val = value.toString();
         char[] charArray = new char[val.length()];

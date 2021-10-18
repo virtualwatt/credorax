@@ -14,7 +14,7 @@ public class Pan extends TextField {
 
     static {
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("pan"),
-                RegexValidatorsFactory.generateValidator("^\\n{16}$")));
+                RegexValidatorsFactory.generateValidator("^\\d{16}$")));
     }
 
     public Pan(String value) {

@@ -14,7 +14,7 @@ public class Email extends TextField {
 
     static {
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("email"),
-                RegexValidatorsFactory.generateValidator("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")));
+                RegexValidatorsFactory.generateValidator("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")));
     }
 
     public Email(String value) {

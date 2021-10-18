@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+// This functionality is better to write using Spring injection as it done for DAL and Audit but lt's use for example old simple singletone too
 public class Errors {
 
     private static final Logger logger = LogManager.getLogger(Errors.class);
