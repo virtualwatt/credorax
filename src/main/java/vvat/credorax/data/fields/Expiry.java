@@ -16,7 +16,7 @@ public class Expiry extends TextField {
 
     static {
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("expiry"),
-                RegexValidatorsFactory.generateValidator("^\\n{4}$")));
+                RegexValidatorsFactory.generateValidator("^\\n{4}$"), true));
         validationCriterias.add(new ValidationCriteria<>(Errors.errorFor("expired"),
                 value -> {
                     String month = value.substring(0, 1);

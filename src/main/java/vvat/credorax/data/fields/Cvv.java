@@ -16,7 +16,7 @@ public class Cvv extends ValidatableField<Integer> {
                 value -> value >= 100 && value <= 999));
     }
 
-    public Cvv(Integer value, List<ValidationCriteria<Integer>> validationCriterias) {
+    public Cvv(Integer value) {
         super(value, validationCriterias);
     }
 }

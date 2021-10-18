@@ -15,8 +15,11 @@ public abstract class ValidatableField<T> extends OneValueField<T> implements Va
     public boolean validate(List<Error> errors) {
         boolean validationPassed = true;
         for (ValidationCriteria<T> validationCreteria : validationCriterias) {
-            if (!validationCreteria.validate(getValue(), errors))
+            if (!validationCreteria.validate(getValue(), errors)) {
                 validationPassed = false;
+                if (validationCreteria.isStopper())
+                    break;
+            }
         }
         return validationPassed;
     }
