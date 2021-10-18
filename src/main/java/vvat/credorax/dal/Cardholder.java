@@ -1,4 +1,4 @@
-package vvat.credorax.controllers;
+package vvat.credorax.dal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import vvat.credorax.data.fields.Email;
@@ -19,7 +19,7 @@ public class Cardholder {
     public Cardholder() { cardholderStruct = null; }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = Encoder.decode(name);
     }
 
     public void setEmail(String email) {
@@ -31,7 +31,7 @@ public class Cardholder {
     }
 
     public String getName() {
-        return cardholderStruct.getName().getSanitizedValue();
+        return Encoder.encode(cardholderStruct.getName().getValue());
     }
 
     public String getEmail() {

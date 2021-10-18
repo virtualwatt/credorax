@@ -1,4 +1,4 @@
-package vvat.credorax.controllers;
+package vvat.credorax.dal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import vvat.credorax.data.fields.Cvv;
@@ -23,28 +23,22 @@ public class Card {
     }
 
     public void setPan(String pan) {
-        this.pan = pan;
+        this.pan = Encoder.decode(pan);
     }
 
     public void setExpiry(String expiry) {
-        this.expiry = expiry;
-    }
-
-    public void setCvv(int cvv) {
-        this.cvv = cvv;
+        this.expiry = Encoder.decode(expiry);
     }
 
     public vvat.credorax.data.struct.Card generateCardStruct() {
-        return new vvat.credorax.data.struct.Card(new Pan(pan), new Expiry(expiry), new Cvv(cvv));
+        return new vvat.credorax.data.struct.Card(new Pan(pan), new Expiry(expiry), new Cvv(0));
     }
 
     public String getPan() {
-        return cardStruct.getPan().getSanitizedValue();
+        return Encoder.encode(cardStruct.getPan().getValue());
     }
 
     public String getExpiry() {
-        return cardStruct.getExpiry().getSanitizedValue();
+        return Encoder.encode(cardStruct.getExpiry().getValue());
     }
-
-    public String getCvv() { return cardStruct.getCvv().getSanitizedValue(); }
 }

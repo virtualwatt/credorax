@@ -19,4 +19,9 @@ public class Cvv extends ValidatableField<Integer> {
     public Cvv(Integer value) {
         super(value, validationCriterias);
     }
+
+    @Override
+    public String getSanitizedValue() {
+        return null;
+    }
 }

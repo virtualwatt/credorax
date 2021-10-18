@@ -1,4 +1,4 @@
-package vvat.credorax.controllers;
+package vvat.credorax.dal;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import vvat.credorax.data.fields.Amount;

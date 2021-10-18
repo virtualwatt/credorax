@@ -1,6 +1,6 @@
 package vvat.credorax;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,9 +21,9 @@ class CredoraxApplicationTests {
 
 	@Test
 	void testStorage(@Autowired Storage storage) {
-		storage.store(getInvoice(1));
-		Invoice invoice = storage.retrieve(1);
-		Assert.assertEquals("1234567887654321", invoice.getCard().getPan().getValue());
+		storage.storeStruct(getInvoice(1));
+		Invoice invoice = storage.retrieveStruct(1);
+		Assertions.assertEquals("1234567887654321", invoice.getCard().getPan().getValue());
 	}
 
 	private Invoice getInvoice(int invoiceNumber) {
@@ -62,25 +62,25 @@ class CredoraxApplicationTests {
 					l1.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-					Assert.fail();
+					Assertions.fail();
 				}
 				//System.out.print("aa" + ii);
-				storage.store(invoice);
+				storage.storeStruct(invoice);
 			});
 		}
 		l1.countDown();
 		//System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		for (Future future: futures) {
+		for (Future<?> future: futures) {
 			try {
 				future.get();
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
-				Assert.fail();
+				Assertions.fail();
 			}
 		}
 
 		CountDownLatch l2 = new CountDownLatch(1);
-		for (int i = 0; i > STORAGE_TASKS_NUM; i++) {
+		for (int i = 0; i < STORAGE_TASKS_NUM; i++) {
 			Invoice invoice = invoices[i];
 			Integer invoiceNumber = i;
 			futures[i] = threadPool.submit(() -> {
@@ -88,21 +88,23 @@ class CredoraxApplicationTests {
 					l2.await();
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-					Assert.fail();
+					Assertions.fail();
 				}
-				Assert.assertEquals(invoice.getInvoiceNumber().getValue(),
-						storage.retrieve(invoiceNumber).getInvoiceNumber().getValue());
+				Assertions.assertEquals(invoice.getInvoiceNumber().getValue(),
+						storage.retrieveStruct(invoiceNumber).getInvoiceNumber().getValue());
 			});
 		}
 		l2.countDown();
-		for (Future future: futures) {
+		for (Future<?> future: futures) {
 			try {
 				future.get();
 			} catch (InterruptedException | ExecutionException e) {
 				e.printStackTrace();
-				Assert.fail();
+				Assertions.fail();
 			}
 		}
+
+		// Add also mixed read/write simultaneous operations
 	}
 
 	// Add other Spring services related tests for e.g. Audit

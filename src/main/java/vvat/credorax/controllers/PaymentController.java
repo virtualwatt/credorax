@@ -31,7 +31,7 @@ public class PaymentController {
         invoiceStruct.validate(errors);
         Result result = new Result(errors);
         if (result.approved) {
-            storage.store(invoiceStruct);
+            storage.storeStruct(invoiceStruct);
             audit.audit(new Invoice(invoiceStruct));
         }
         return result;
@@ -41,7 +41,7 @@ public class PaymentController {
 
     @GetMapping("/RetrieveTransaction")
     public Object retrieveTransaction(Integer invoice) {
-        vvat.credorax.data.struct.Invoice invoiceStruct = storage.retrieve(invoice);
+        vvat.credorax.data.struct.Invoice invoiceStruct = storage.retrieveStruct(invoice);
         return invoiceStruct == null ? transactionNotFound : new Invoice(invoiceStruct);
     }
 }
