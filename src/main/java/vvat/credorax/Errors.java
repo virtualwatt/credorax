@@ -34,7 +34,7 @@ public class Errors {
 
     private Errors() {
         try {
-            prop.load(ClassLoader.getSystemResourceAsStream("/errors.properties"));
+            prop.load(ClassLoader.getSystemResourceAsStream("errors.properties"));
         } catch (IOException e) {
             logger.error("Error loading errors list", e);
             System.exit(1);

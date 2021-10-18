@@ -20,4 +20,9 @@ public class Pan extends TextField {
     public Pan(String value) {
         super(value, validationCriterias);
     }
+
+    @Override
+    public String getSanitizedValue() {
+        return "************" + getValue().substring(12);
+    }
 }
