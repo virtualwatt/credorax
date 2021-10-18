@@ -24,7 +24,7 @@ public class Expiry extends TextField {
                     String yearMonth = year + month;
                     int ym = Integer.parseUnsignedInt(yearMonth);
                     int curYM = Integer.parseInt(new SimpleDateFormat("yyMM").format(new Date()));
-                    return ym < curYM;
+                    return ym >= curYM;
                 }));
     }
 
