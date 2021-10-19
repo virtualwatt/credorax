@@ -37,3 +37,12 @@ It appears all other requirements are met,
 - sanitizing.
 - The system allows enhancements where necessary e.g. it's possible to easily substitute the storage or the audit services.
 - Unit test examples are added including Load Test scenario.
+
+### Next steps
+
+Having done with this first test now I see the following refactories to be completed for the application further versions:
+- Use only "String" type data for having full dynamical control of validation
+- Avoid some copy-paste approaches implemented for different types of serialization (e.g. revealed vs sanitized vs encoded)
+and implement probably one proxy-style based on e.g. alpha functions executions to apply the corresponding behavior
+- Extend unit testing
+
