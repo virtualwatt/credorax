@@ -24,7 +24,8 @@ having missed a point that we need to test on the level of returned errors abili
 it broke existing logic and require some small refactoring. Also addition of existence validation breaks my types already applied.
 To reactor to aim these 2 points and return errors as required it should be e.g. changed to be only Strings and validation chains
 probably should be refactored to proxy the already acquired result further by the chain. Also the same is needed to check
-for the mandatory existence on the required level.
+for the mandatory existence on the required level. Probably better way is to use custom validators (annotations) or 3rd party ones
+with ResponseEntityExceptionHandler.
 
 I believe the project source structure brings pretty wide demonstration of architecturing approaches.
 Even probably more than necessary (I wanted to show different OOP approaches with this example) that can be treat as excessive
@@ -41,7 +42,8 @@ It appears all other requirements are met,
 ### Next steps
 
 Having done with this first test now I see the following refactories to be completed for the application further versions:
-- Use only "String" type data for having full dynamical control of validation
+- Use only "String" type data for having full dynamical control of validation, another way (probably more preferable) is
+to use custom validators (or some 3rd party ones) with ResponseEntityExceptionHandler
 - Avoid some copy-paste approaches implemented for different types of serialization (e.g. revealed vs sanitized vs encoded)
 and implement probably one proxy-style based on e.g. alpha functions executions to apply the corresponding behavior
 - Extend unit testing
